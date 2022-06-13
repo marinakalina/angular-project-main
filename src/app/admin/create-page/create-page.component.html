@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1>Create Post</h1>
+
+  <div class="form-control" [ngClass]="{invalid: isControlNeedMistake('title')}">
+    <label for="title">Post Title:</label>
+    <input id='title' type="text"  formControlName="title">
+    <div
+      class="validation"
+      *ngIf="isControlNeedMistake('title')"
+    >
+      <small *ngIf="form.get('title').errors.required">Enter Title</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Post Content:</label>
+    <quill-editor formControlName="text"></quill-editor>
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: isControlNeedMistake('author')}">
+    <label for="author">Post Author:</label>
+    <input id='author' type="text"  formControlName="author">
+    <div
+      class="validation"
+      *ngIf="isControlNeedMistake('author')"
+    >
+      <small *ngIf="form.get('author').errors.required">Who is Author?</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-dark btn-block" [disabled]="form.invalid">Create Post</button>
+</form>

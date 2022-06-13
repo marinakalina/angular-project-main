@@ -1,0 +1,40 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Login to Administrator Panel</h2>
+
+  <div class="alert alert-danger" *ngIf="authService.error$ | async as error">
+    {{error}}
+  </div>
+
+  <div class="alert alert-info" *ngIf="message">
+    {{message}}
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: isControlNeedMistake('email')}">
+    <label for="email">Email:</label>
+    <input id='email' type="email"  formControlName="email">
+    <div
+      class="validation"
+      *ngIf="isControlNeedMistake('email')"
+    >
+      <small *ngIf="form.get('email').errors.required">Enter Email</small>
+      <small *ngIf="form.get('email').errors.email">Invalid Email</small>
+    </div>
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: isControlNeedMistake('password')}">
+    <label for="password">Password:</label>
+    <input id='password' type="password" formControlName="password">
+    <div
+      class="validation"
+      *ngIf="isControlNeedMistake('password')"
+    >
+      <small *ngIf="form.get('password').errors.required">Enter Password</small>
+      <small *ngIf="form.get('password').errors.minlength">
+        Minimal password length is {{form.get('password').errors.minlength.requiredLength}} symbols.
+        Now is {{form.get('password').errors.minlength.actualLength}} symbol(s)
+      </small>
+    </div>
+  </div>
+
+  <button [disabled]="form.invalid || submitting" type="submit" class="btn btn-primary">Login</button>
+</form>

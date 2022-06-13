@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "angular-blog-ff91b",
+    "public": "dist/angular-practise",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
