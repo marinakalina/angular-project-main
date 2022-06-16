@@ -31,6 +31,12 @@ export class AuthService {
       );
   }
 
+  signUp(login: string, password: string): Observable<void> {
+    return this.http.post(`${environment.apiURLS.authSignUp}?key=${environment.apiKey}`, {email: login, password}).pipe(
+      tap(console.log),
+    );
+  }
+
   logout(): void {
     this.setToken(null);
   }
