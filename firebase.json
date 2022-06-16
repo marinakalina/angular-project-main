@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "angular-blog-ff91b",
+    "site": "angularblog-7939f",
     "public": "dist/angular-practise",
     "ignore": [
       "firebase.json",

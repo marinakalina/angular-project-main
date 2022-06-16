@@ -2,9 +2,9 @@ import {Environment} from './interface';
 
 export const environment: Environment = {
   production: true,
-  apiKey: 'AIzaSyCMcsV2tLwtN7kduqZ4Egq3n5RMnIo5FjM',
+  apiKey: 'AIzaSyAXoeDcLmBbKdvTE6ZG-9Gzkj9FVnmS4u0',
   apiURLS: {
-    auth: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken',
-    db: 'https://angular-blog-ff91b-default-rtdb.firebaseio.com/'
+    auth: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword',
+    db: 'https://angularblog-7939f-default-rtdb.europe-west1.firebasedatabase.app'
   }
 };
