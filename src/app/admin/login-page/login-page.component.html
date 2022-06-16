@@ -37,4 +37,5 @@
   </div>
 
   <button [disabled]="form.invalid || submitting" type="submit" class="btn btn-primary">Login</button>
+  <button [disabled]="form.invalid || submitting" (click)="submitSignUp()" type="button" class="btn btn-primary">SignUp</button>
 </form>

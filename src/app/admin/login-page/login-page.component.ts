@@ -58,6 +58,27 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  submitSignUp(): void {
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.submitting = true;
+
+    const user: User = {
+      email: this.form.value.email,
+      password: this.form.value.password
+    };
+
+    this.authService.signUp(user).subscribe(() => {
+      this.form.reset();
+      this.submitting = false;
+      this.router.navigate(['/admin', 'dashboard']);
+    }, () => {
+      this.submitting = false;
+    });
+  }
+
   isControlNeedMistake(controlName: string): boolean {
     return this.form.get(controlName).touched && this.form.get(controlName).invalid;
   }

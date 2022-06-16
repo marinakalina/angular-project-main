@@ -31,9 +31,10 @@ export class AuthService {
       );
   }
 
-  signUp(login: string, password: string): Observable<void> {
-    return this.http.post(`${environment.apiURLS.authSignUp}?key=${environment.apiKey}`, {email: login, password}).pipe(
-      tap(console.log),
+  signUp(user: User): Observable<FbAuthResponse> {
+    return this.http.post(`${environment.apiURLS.authSignUp}?key=${environment.apiKey}`, user).pipe(
+      tap(this.setToken),
+      catchError(this.handleError.bind(this))
     );
   }
 
@@ -58,6 +59,8 @@ export class AuthService {
       case 'INVALID_PASSWORD':
         this.error$.next('Invalid Password');
         break;
+      case 'EMAIL_EXISTS':
+        this.error$.next('Email Already Exist');
     }
 
     return throwError(error);
