@@ -37,7 +37,7 @@ export class CreatePageComponent implements OnInit {
 
     const post: Post = {
       title: this.form.value.title,
-      author: this.form.value.title,
+      author: this.form.value.author,
       date: new Date(),
       text: this.form.value.text
     };
